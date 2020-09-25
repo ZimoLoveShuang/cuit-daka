@@ -66,10 +66,10 @@ def clockIn(info):
     url = 'https://yxxt.cuit.edu.cn/api/blade-workbench/studentClock/saveClockInfo'
     data = {
         'temperature': '%.1f' % (36 + random.random()),
-        'location': '四川省成都市双流区西航港街道成都信息工程大学行政办公楼成都信息工程大学(航空港校区)',
-        'locationProvince': '四川省',
-        'locationCity': '成都市',
-        'locationCountry': '双流区',
+        'location': location,
+        'locationProvince': locationProvince,
+        'locationCity': locationCity,
+        'locationCountry': locationCountry,
         'user_info_id': info['account'],
         'user_info_name': info['nick_name']
     }
@@ -117,7 +117,7 @@ def main_handler(event, context):
         result = clockIn(info)
         if result == r'"保存成功"':
             if len(key) > 0:
-                sendMessage('自动打卡成功')
+                sendMessage('智慧成信自动打卡成功')
         else:
             print('自动打卡失败')
             exit(-1)
